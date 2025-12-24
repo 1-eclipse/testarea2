@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Basic Website</title>
+    <style>
+        :root{
+            --bg:#f6f8fb; --card:#fff; --accent:#2b7be4; --muted:#6b7280;
+            --radius:10px; --shadow: 0 6px 18px rgba(36,59,80,0.08);
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        html,body{height:100%;margin:0;background:var(--bg);color:#0f1724}
+        .container{max-width:980px;margin:40px auto;padding:24px}
+        header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+        .brand{display:flex;align-items:center;gap:12px}
+        .logo{
+            width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#6ba7ff);
+            display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:var(--shadow)
+        }
+        nav a{margin-left:14px;color:var(--muted);text-decoration:none;font-weight:600}
+        nav a.primary{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;box-shadow:var(--shadow)}
+        .hero{display:grid;grid-template-columns:1fr;gap:18px;background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow)}
+        .hero h1{margin:0;font-size:1.8rem}
+        .hero p{margin:6px 0 0;color:var(--muted)}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+        .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);min-height:100px}
+        footer{margin-top:24px;text-align:center;color:var(--muted);font-size:0.9rem}
+        /* Responsive */
+        @media (max-width:800px){
+            .grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media (max-width:560px){
+            header{flex-direction:column;align-items:flex-start}
+            .grid{grid-template-columns:1fr}
+            nav a{margin-left:8px;margin-top:8px}
+        }
+        /* simple form */
+        form{display:flex;flex-direction:column;gap:8px}
+        input,textarea{padding:10px;border:1px solid #e6e9ee;border-radius:8px;font:inherit}
+        button{background:var(--accent);color:#fff;border:0;padding:10px 12px;border-radius:8px;cursor:pointer}
+        small{color:var(--muted)}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">B</div>
+                <div>
+                    <div style="font-weight:700">BasicSite</div>
+                    <div style="font-size:0.85rem;color:var(--muted)">A minimal starter</div>
+                </div>
+            </div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#contact">Contact</a>
+                <a class="primary" href="#get-started">Get started</a>
+            </nav>
+        </header>
+
+        <section class="hero" id="get-started" aria-labelledby="hero-title">
+            <div>
+                <h1 id="hero-title">Simple, responsive starter website</h1>
+                <p>Clean layout with header, cards and a contact form — ready to customize for your project.</p>
+            </div>
+
+            <div class="grid" id="features">
+                <div class="card">
+                    <h3 style="margin:0 0 8px 0">Responsive</h3>
+                    <p style="margin:0;color:var(--muted)">Adapts to mobile, tablet and desktop with a single CSS file.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin:0 0 8px 0">Accessible</h3>
+                    <p style="margin:0;color:var(--muted)">Semantic HTML, clear focusable controls and readable contrast.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin:0 0 8px 0">Customizable</h3>
+                    <p style="margin:0;color:var(--muted)">Replace colors, fonts or layout quickly to fit your needs.</p>
+                </div>
+            </div>
+
+            <div class="card" id="contact" style="grid-column:1/-1">
+                <h3 style="margin:0 0 8px 0">Contact</h3>
+                <form onsubmit="event.preventDefault();alert('Message sent (demo)')">
+                    <input type="text" name="name" placeholder="Your name" required />
+                    <input type="email" name="email" placeholder="you@example.com" required />
+                    <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                    <div style="display:flex;align-items:center;justify-content:space-between">
+                        <small>We will respond within 48 hours.</small>
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            © <span id="year"></span> BasicSite — Built with HTML & CSS
+        </footer>
+    </div>
+
+    <script>
+        // small scripts
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
